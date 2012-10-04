@@ -9,3 +9,7 @@ How to build and run this example:
     % cd uadetector-example
     % mvn package
     % java -jar target/uadetector-example-0.2-SNAPSHOT.jar
+
+You can also do a clean build and run directly from maven:
+
+    % mvn clean package exec:java
