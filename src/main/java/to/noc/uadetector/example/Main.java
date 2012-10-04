@@ -1,12 +1,9 @@
 package to.noc.uadetector.example;
 
-import java.lang.reflect.Field;
-import java.util.concurrent.ScheduledExecutorService;
 import net.sf.uadetector.OperatingSystem;
-import net.sf.uadetector.UADetectorServiceFactory;
 import net.sf.uadetector.UserAgent;
 import net.sf.uadetector.UserAgentStringParser;
-import net.sf.uadetector.parser.UpdatingUserAgentStringParserImpl;
+import net.sf.uadetector.service.UADetectorServiceFactory;
 
 public class Main {
 
@@ -20,6 +17,7 @@ public class Main {
         OperatingSystem os = agent.getOperatingSystem();
         
         StringBuilder sb = new StringBuilder();
+        sb.append("Parser Version: ").append(parser.getDataVersion()).append("\n");
         sb.append("User Agent: ").append(uaString).append("\n");
         sb.append("Type: ").append(agent.getTypeName()).append("\n");
         sb.append("Family: ").append(agent.getFamily()).append("\n");
@@ -34,33 +32,5 @@ public class Main {
         sb.append("OS URL: ").append(os.getUrl()).append("\n");
 
         System.out.println(sb);
-        
-        /*
-         * The program will hang without the hack below, because the scheduler
-         * is not running as a daemon thread. To fix this UADetector could do
-         * one of:
-         * 
-         *    A) Use java.util.Timer instead of ScheduledExecutorService and pass
-         *       "true" to the constructor.  The daemon thread can be killed at
-         *       any time, so you must be carefull with file I/O.  Partially
-         *       downloaded files can be written to one name, then atomically
-         *       renamed to the final name when complete.  While some people on
-         *       StackOverflow are saying that Timer is obsolete, I don't
-         *       agree with them.  For a single threaded background process that
-         *       terminates when the main thread exits, it's a very convenient
-         *       tool.
-         * 
-         *    B) Provide some interface so that scheduler.shutdown() can be called.
-         *       This method will let any existing update thread finish, but will
-         *       not schedule any future threads.
-         * 
-         *    C) Some other solution better than the ones I proposed above.  :)
-         */
-        
-        UpdatingUserAgentStringParserImpl updatingParser = (UpdatingUserAgentStringParserImpl) parser;
-        Field privateStringField = UpdatingUserAgentStringParserImpl.class.getDeclaredField("scheduler");
-        privateStringField.setAccessible(true);
-        ScheduledExecutorService scheduler = (ScheduledExecutorService) privateStringField.get(updatingParser);
-        scheduler.shutdown();
     }
 }

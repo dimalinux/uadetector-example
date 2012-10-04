@@ -8,4 +8,4 @@ How to build and run this example:
     % git clone https://github.com/dimalinux/uadetector-example.git
     % cd uadetector-example
     % mvn package
-    % java -jar target/uadetector-example-0.1-SNAPSHOT.jar
+    % java -jar target/uadetector-example-0.2-SNAPSHOT.jar
