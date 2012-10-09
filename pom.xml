@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>to.noc.uadetector.example</groupId>
     <artifactId>uadetector-example</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,8 +14,8 @@
     <dependencies>
         <dependency>
             <groupId>net.sf.uadetector</groupId>
-            <artifactId>uadetector-resources</artifactId>
-            <version>2012.09</version>
+            <artifactId>uadetector-core</artifactId>
+            <version>0.6.0</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>

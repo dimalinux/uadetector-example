@@ -1,9 +1,13 @@
 package to.noc.uadetector.example;
 
+import java.net.URL;
 import net.sf.uadetector.OperatingSystem;
 import net.sf.uadetector.UserAgent;
 import net.sf.uadetector.UserAgentStringParser;
-import net.sf.uadetector.service.UADetectorServiceFactory;
+import net.sf.uadetector.datastore.CachingXmlDataStore;
+import net.sf.uadetector.datastore.DataStore;
+import net.sf.uadetector.datastore.RefreshableDataStore;
+import net.sf.uadetector.parser.UpdatingUserAgentStringParserImpl;
 
 public class Main {
 
@@ -11,8 +15,16 @@ public class Main {
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Ubuntu/11.10 Chromium/18.0.1025.168 Chrome/18.0.1025.168 Safari/535.19";
 
     public static void main(final String[] args) throws Exception {
-        UserAgentStringParser parser;
-        parser = UADetectorServiceFactory.getOnlineUpdatingParser();
+               
+        RefreshableDataStore dataStore =  
+                CachingXmlDataStore.createCachingXmlDataStore(
+                    new URL(DataStore.DEFAULT_DATA_URL), 
+                    new URL(DataStore.DEFAULT_VERSION_URL), 
+                    DataStore.DEFAULT_CHARSET
+                );
+
+        UserAgentStringParser parser = new UpdatingUserAgentStringParserImpl(dataStore);
+
         UserAgent agent = parser.parse(uaString);
         OperatingSystem os = agent.getOperatingSystem();
         
