@@ -13,7 +13,8 @@ public class Main {
         "Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B208 Safari/7534.48.3",
         "Mozilla/5.0 (Windows NT 6.1; rv:16.0) Gecko/20100101 Firefox/16.0",
         "Opera/9.80 (Windows NT 6.1; WOW64; U; en) Presto/2.10.289 Version/12.01",
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.101 Safari/537.11"
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.101 Safari/537.11",
+        "Bogus User Agent"
     };
 
     public static void printUserAgent(UserAgent ua) {               
@@ -25,7 +26,7 @@ public class Main {
         sb.append("Producer URL: ").append(ua.getProducerUrl()).append("\n");
         sb.append("Producer: ").append(ua.getProducer()).append("\n");
         sb.append("URL: ").append(ua.getUrl()).append("\n");
-        sb.append("Icon: ").append("WAITING FOR FEATURE" /*ua.getIcon()*/).append("\n");
+        sb.append("Icon: ").append(ua.getIcon()).append("\n");
         
         OperatingSystem os = ua.getOperatingSystem();
         sb.append("OS Company: ").append(os.getProducer()).append("\n");
@@ -33,7 +34,7 @@ public class Main {
         sb.append("OS Family Name: ").append(os.getFamilyName()).append("\n");
         sb.append("OS Version Number: ").append(os.getVersionNumber().toVersionString()).append("\n");
         sb.append("OS URL: ").append(os.getUrl()).append("\n");
-        sb.append("OS Icon: ").append("WAITING FOR FEATURE" /*os.getIcon()*/).append("\n");
+        sb.append("OS Icon: ").append(os.getIcon()).append("\n");
 
         System.out.println(sb);        
     }
