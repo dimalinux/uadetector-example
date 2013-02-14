@@ -15,7 +15,7 @@
         <dependency>
             <groupId>net.sf.uadetector</groupId>
             <artifactId>uadetector-resources</artifactId>
-            <version>2012.12</version>
+            <version>2013.01</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
