@@ -23,6 +23,7 @@ public class Main {
         sb.append("Type: ").append(ua.getTypeName()).append("\n");
         sb.append("Family: ").append(ua.getFamily()).append("\n");
         sb.append("Name: ").append(ua.getName()).append("\n");
+        sb.append("Version: ").append(ua.getVersionNumber().toVersionString()).append("\n");
         sb.append("Producer URL: ").append(ua.getProducerUrl()).append("\n");
         sb.append("Producer: ").append(ua.getProducer()).append("\n");
         sb.append("URL: ").append(ua.getUrl()).append("\n");
