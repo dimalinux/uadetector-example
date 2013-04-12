@@ -15,12 +15,15 @@ public class Main {
         "Opera/9.80 (Windows NT 6.1; WOW64; U; en) Presto/2.10.289 Version/12.01",
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.101 Safari/537.11",
         "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+        // Note: Amazon Silk was not getting identified when I commited this example
+        "Mozilla/5.0 (Linux; U; en-gb; KFOT Build/IML74K) AppleWebKit/535.19 (KHTML, like Gecko) Silk/2.8 Safari/535.19 Silk-Accelerated=true",
+        "Mozilla/5.0 (Linux; U; Android 2.2; ru-ru; GT-I9000 Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
         "Bogus User Agent"
     };
 
-    public static void printUserAgent(UserAgent ua) {               
+    public static void printUserAgent(UserAgent ua) {
         StringBuilder sb = new StringBuilder();
-        
+
         sb.append("Name: ").append(ua.getName()).append("\n");
         sb.append("Version: ").append(ua.getVersionNumber().toVersionString()).append("\n");
         sb.append("Type: ").append(ua.getTypeName()).append("\n");
@@ -29,7 +32,7 @@ public class Main {
         sb.append("Icon: ").append(ua.getIcon()).append("\n");
         sb.append("Producer: ").append(ua.getProducer()).append("\n");
         sb.append("Producer URL: ").append(ua.getProducerUrl()).append("\n");
-        
+
         OperatingSystem os = ua.getOperatingSystem();
         sb.append("OS Name: ").append(os.getName()).append("\n");
         sb.append("OS Family Name: ").append(os.getFamilyName()).append("\n");
@@ -38,16 +41,16 @@ public class Main {
         sb.append("OS Icon: ").append(os.getIcon()).append("\n");
         sb.append("OS Company: ").append(os.getProducer()).append("\n");
         sb.append("OS Company URL: ").append(os.getProducerUrl()).append("\n");
-        
-        System.out.println(sb);        
+
+        System.out.println(sb);
     }
-   
+
     public static void main(final String[] args) throws Exception {
-               
-        UserAgentStringParser parser = UADetectorServiceFactory.getCachingAndUpdatingParserHolder();
-        
+
+        UserAgentStringParser parser = UADetectorServiceFactory.getCachingAndUpdatingParser();
+
         System.out.println("Parser Version: " + parser.getDataVersion());
-        
+
         for (String uaString : uaStrings) {
             System.out.println("---------------------------------------------");
             System.out.println("User Agent: " + uaString);
