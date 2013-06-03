@@ -1,7 +1,7 @@
 package to.noc.uadetector.example;
 
 import net.sf.uadetector.OperatingSystem;
-import net.sf.uadetector.UserAgent;
+import net.sf.uadetector.ReadableUserAgent;
 import net.sf.uadetector.UserAgentStringParser;
 import net.sf.uadetector.service.UADetectorServiceFactory;
 
@@ -21,7 +21,7 @@ public class Main {
         "Bogus User Agent"
     };
 
-    public static void printUserAgent(UserAgent ua) {
+    public static void printUserAgent(ReadableUserAgent ua) {
         StringBuilder sb = new StringBuilder();
 
         sb.append("Name: ").append(ua.getName()).append("\n");
